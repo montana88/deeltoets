@@ -16,7 +16,7 @@ var CONTENT = CONTENT || {};
 		
 	};
 
-	CONTENT.Ranking = {
+	CONTENT.ranking = {
 		
 	};
 	
@@ -33,9 +33,9 @@ var CONTENT = CONTENT || {};
 				url  		=  'https://api.leaguevine.com/v1/game_scores/?tournament_id=19389&access_token=82996312dc',
 				postData 	= JSON.stringify({
 					game_id: '127236',
-				    team_1_score: '2',
-				    team_2_score: '4',
-				    is_final: 'False'
+					team_1_score: '2',
+					team_2_score: '4',
+					is_final: 'False'
 				});
 
 			// Create request
@@ -64,18 +64,18 @@ var CONTENT = CONTENT || {};
 			//checked je URL.
 	  		routie({
 			    '/game': function() {
-			    	CONTENT.page.game();
+					CONTENT.page.game();
 				},
 			    '/schedule': function() {
-			    	CONTENT.page.schedule();
+					CONTENT.page.schedule();
 			    },
 
-			    '/Ranking': function() {
-			    	CONTENT.page.Ranking();
+			    '/ranking': function() {
+					CONTENT.page.ranking();
 			    },
 			    
 			    '*': function() {
-			    	CONTENT.page.game();
+					CONTENT.page.game();
 			    }
 			});
 		},
@@ -111,7 +111,7 @@ var CONTENT = CONTENT || {};
 			CONTENT.router.change();
 		},
 		schedule: function () {
-			console.log("content.shecule.tijden " + CONTENT.schedule.tijden);
+			console.log("content.schedule.data " + CONTENT.schedule.data);
 			schemaData: $$.json('https://api.leaguevine.com/v1/game_scores/?tournament_id=19389&access_token=4675792b56',{}, function(data){
 				
 				Transparency.render(qwery('[data-route=schedule]')[0], data);
@@ -119,11 +119,11 @@ var CONTENT = CONTENT || {};
 			CONTENT.router.change();
 
 		},
-		Ranking: function () {
-			console.log("CONTENT.Ranking.pools" + CONTENT.Ranking.pools);
+		ranking: function () {
+			console.log("CONTENT.ranking.pools" + CONTENT.ranking.pools);
 			poolData: $$.json('https://api.leaguevine.com/v1/pools/?tournament_id=19389&access_token=e6c8dbf9f2',{}, function(data){
-				
-				Transparency.render(qwery('[data-route=Ranking]')[0], data);
+			
+				Transparency.render(qwery('[data-route=ranking]')[0], data);
 			})
 			CONTENT.router.change();
 		}
